@@ -1,0 +1,1 @@
+ALTER TABLE tweets ADD PARTITION (dt='20150813') LOCATION '/user/flume/tweets/2015/08/13';

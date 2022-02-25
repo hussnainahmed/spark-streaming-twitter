@@ -1,0 +1,21 @@
+#!/bin/bash
+
+PIDFILE=/var/run/scraper.pid
+
+case $1 in
+   start)
+       source /home
+       # Launch your program as a detached process
+       python2.7 /root/kafka-producer/user_tweet_collector.py>/dev/null &
+       # Get its PID and store it
+       echo $! > ${PIDFILE} 
+   ;;
+   stop)
+      kill `cat ${PIDFILE}`
+      # Now that it's killed, don't forget to remove the PID file
+      rm ${PIDFILE}
+   ;;
+   *)
+      echo "usage: scraper {start|stop}" ;;
+esac
+exit 0

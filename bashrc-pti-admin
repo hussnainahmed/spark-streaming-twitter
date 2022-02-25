@@ -1,0 +1,32 @@
+# .bashrc
+
+# User specific aliases and functions
+
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+export M2_HOME=/root/maven/apache-maven-3.3.3
+export M2=$M2_HOME/bin
+export PATH=$M2:$PATH
+export JAVA_HOME=/opt/jdk1.7.0_79
+export JRE_HOME=/opt/jdk1.7.0_79/jre
+export PATH=$PATH:/opt/jdk1.7.0_79/bin:/opt/jdk1.7.0_79/jre/bin
+export MAVEN_OPTS="-Xmx2g -XX:MaxPermSize=512M -XX:ReservedCodeCacheSize=512m"
+#export R_HOME=/usr/lib/R
+export HIVE_HOME=/opt/cloudera/parcels/CDH/lib/hive
+export HADOOP_HOME=/opt/cloudera/parcels/CDH/lib/hadoop
+export HADOOP_CONF_DIR=/etc/hadoop/conf/
+#export SPARK_HOME=/root/spark-1.2.1-bin-hadoop2.4/
+#export SPARK_CLASSPATH=$(find /var/lib/hive/ -name '*.jar' -print0 | sed 's/\x0/:/g')
+export SCALA_HOME=/usr/lib/scala
+export PATH=$PATH:/usr/lib/scala/bin
+export PATH=$HOME/bin:$PATH
+#export tsdtmp=${TMPDIR-'/tmp'}/tsd
+#export JAVA_OPTS="-Xms4096m -Xmx4096m -Xss1024m -Xmn1024m"
+#export PATH=/root/jython/bin:$PATH
+export HADOOP_CMD=/usr/bin/hadoop

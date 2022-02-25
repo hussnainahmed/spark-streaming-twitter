@@ -1,0 +1,22 @@
+#!/bin/bash
+
+PIDFILE=/var/run/spark-pti-streaming.pid
+LOG_FILE="/root/spark-scripts/logs/spark-pti-stream_$(date +%b)_$(date +%d)_$(date +%Y).log"
+
+case $1 in
+   start)
+       #source /home
+       # Launch your program as a detached process
+       /usr/local/spark/bin/spark-submit --master spark://pti-base.insafanalytics.com:7077 --executor-memory 512m --total-executor-cores 1 /root/spark-scripts/pti.py >> ${LOG_FILE} 2>&1 &
+       # Get its PID and store it
+       echo $! > ${PIDFILE} 
+   ;;
+   stop)
+      kill `cat ${PIDFILE}`
+      # Now that it's killed, don't forget to remove the PID file
+      rm ${PIDFILE}
+   ;;
+   *)
+      echo "usage: scraper {start|stop}" ;;
+esac
+exit 0
